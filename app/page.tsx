@@ -13,20 +13,24 @@ export const metadata: Metadata = {
 async function getProducts() {
   try {
     const res = await fetch("https://fakestoreapi.com/products", {
-      next: { revalidate: 60 },
+      cache: "no-store",
     });
 
-    if (!res.ok) return [];
+    if (!res.ok) {
+      console.error("API error:", res.status);
+      return [];
+    }
 
     const data = await res.json();
-
     if (!Array.isArray(data)) return [];
 
     return data;
-  } catch (e) {
+  } catch (err) {
+    console.error("Fetch failed:", err);
     return [];
   }
 }
+
 
 export default async function Page() {
   const products = await getProducts();
