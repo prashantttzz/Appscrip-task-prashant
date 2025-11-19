@@ -11,10 +11,21 @@ export const metadata: Metadata = {
 };
 
 async function getProducts() {
-  const res = await fetch("https://fakestoreapi.com/products", {
-    next: { revalidate: 60 },
-  });
-  return res.json();
+  try {
+    const res = await fetch("https://fakestoreapi.com/products", {
+      next: { revalidate: 60 },
+    });
+
+    if (!res.ok) return [];
+
+    const data = await res.json();
+
+    if (!Array.isArray(data)) return [];
+
+    return data;
+  } catch (e) {
+    return [];
+  }
 }
 
 export default async function Page() {
