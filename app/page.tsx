@@ -13,11 +13,13 @@ export const metadata: Metadata = {
 async function getProducts() {
   try {
     const res = await fetch("https://fakestoreapi.com/products", {
-      cache: "no-store",
-    });
+next: { revalidate: 60 }, 
+      headers: {
+        "User-Agent": "Nextjs-Server-Side-Fetch",
+      },    });
 
     if (!res.ok) {
-      console.error("API error:", res.status);
+      console.error("API error:", res);
       return [];
     }
 
