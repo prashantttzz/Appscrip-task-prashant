@@ -7,14 +7,14 @@ export function Header() {
       <div className="hd-top">
         <div className="hd-left">
           <Menu className="hd-menu-mobile" />
-          <Image src="logo.svg" height={1000} width={1000} alt="logo" className="hd-logo" />
+          <Image src="Logo.svg" height={1000} width={1000} alt="logo" className="hd-logo" />
         </div>
 
         <h1 className="hd-title">LOGO</h1>
 
         <div className="hd-right">
           <Image
-            src="icons.png"
+            src="Icons.png"
             height={1000}
             width={1000}
             alt="icons"
