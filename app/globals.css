@@ -1,0 +1,15 @@
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    padding: 0px;
+    margin: 0px;
+      font-family: var(--font-normal);
+    @apply bg-background text-foreground;
+  }
+}
+.norm {
+  font-family: var(--font-normal);
+}
